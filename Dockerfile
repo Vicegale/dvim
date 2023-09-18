@@ -28,8 +28,6 @@ RUN curl -fsSL https://bun.sh/install | bash
 RUN mv /root/.bun/bin/* /usr/bin/
 RUN ln -s /usr/bin/bun /usr/bin/npm
 
-ENV TERM=screen-256color
-
 # Perms
 RUN chmod -R a=rw $XDG_CONFIG_HOME
 RUN chmod -R a=rw $XDG_DATA_HOME
@@ -37,6 +35,7 @@ RUN chmod -R a=rw $XDG_STATE_HOME
 
 # Cosmetic
 RUN sed -i '/#force_color/c\force_color_prompt=yes' ~/.bashrc
+ENV TERM=screen-256color
 
 # Cleanup
 RUN rm /nvim.appimage
