@@ -1,6 +1,6 @@
 # How to build
 
-Just clone and run ./build.sh
+Requires Docker. Just clone and run ./build.sh. It creates an image called nvim, make sure it won't replace anything.
 
 # How to run
 

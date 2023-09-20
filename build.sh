@@ -1,1 +1,1 @@
-sudo docker build -t nvim .
+sudo docker build -t dvim .

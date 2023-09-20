@@ -1,1 +1,1 @@
-sudo docker stop nvim && sudo docker rm nvim
+sudo docker stop dvim && sudo docker rm dvim

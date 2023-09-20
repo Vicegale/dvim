@@ -1,1 +1,1 @@
-sudo docker run --name nvim -ti nvim bash
+sudo docker run --name dvim -ti dvim bash
