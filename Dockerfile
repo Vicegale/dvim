@@ -36,8 +36,6 @@ RUN tar -xJvf node-v18.18.0-linux-x64.tar.xz -C /usr/local/lib/nodejs
 
 RUN echo "export PATH=/usr/local/lib/nodejs/node-v18.18.0-linux-x64/bin:$PATH" >> .bashrc
 
-ENV TERM=screen-256color
-
 # Perms
 RUN chmod -R a=rw $XDG_CONFIG_HOME
 RUN chmod -R a=rw $XDG_DATA_HOME
@@ -45,6 +43,7 @@ RUN chmod -R a=rw $XDG_STATE_HOME
 
 # Cosmetic
 RUN sed -i '/#force_color/c\force_color_prompt=yes' ~/.bashrc
+ENV TERM=screen-256color
 
 # Cleanup
 RUN rm /nvim.appimage
