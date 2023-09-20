@@ -5,7 +5,7 @@ ENV XDG_DATA_HOME=/nvim/share
 ENV XDG_STATE_HOME=/nvim/state
 
 RUN apt-get update
-RUN apt-get install -y curl git gcc unzip
+RUN apt-get install -y curl git gcc unzip 
 
 # Install nvim
 RUN curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
@@ -24,9 +24,17 @@ RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 # Setup bun for lsp installs (replaces npm)
-RUN curl -fsSL https://bun.sh/install | bash
-RUN mv /root/.bun/bin/* /usr/bin/
-RUN ln -s /usr/bin/bun /usr/bin/npm
+#RUN curl -fsSL https://bun.sh/install | bash
+#RUN mv /root/.bun/bin/* /usr/bin/
+#RUN ln -s /usr/bin/bun /usr/bin/npm
+
+WORKDIR /root
+RUN apt-get install -y xz-utils
+RUN curl -O https://nodejs.org/dist/v18.18.0/node-v18.18.0-linux-x64.tar.xz
+RUN mkdir -p /usr/local/lib/nodejs
+RUN tar -xJvf node-v18.18.0-linux-x64.tar.xz -C /usr/local/lib/nodejs
+
+RUN echo "export PATH=/usr/local/lib/nodejs/node-v18.18.0-linux-x64/bin:$PATH" >> .bashrc
 
 ENV TERM=screen-256color
 
@@ -42,3 +50,5 @@ RUN sed -i '/#force_color/c\force_color_prompt=yes' ~/.bashrc
 RUN rm /nvim.appimage
 RUN rm -rf /root/.bun/install
 RUN apt-get remove -y unzip
+
+WORKDIR /root
