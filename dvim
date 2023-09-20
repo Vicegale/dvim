@@ -1,1 +1,1 @@
-sudo docker run -ti -v $(pwd):/root/dir -w /root/dir nvim bash
+sudo docker run -ti -v $(pwd):/root/$(basename $(pwd)) -w /root/$(basename $(pwd)) nvim bash
