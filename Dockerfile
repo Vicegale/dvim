@@ -23,11 +23,7 @@ RUN git clone https://github.com/Vicegale/my-nvim-config.git .
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
-# Setup bun for lsp installs (replaces npm)
-#RUN curl -fsSL https://bun.sh/install | bash
-#RUN mv /root/.bun/bin/* /usr/bin/
-#RUN ln -s /usr/bin/bun /usr/bin/npm
-
+# Setup node and npm for LSP
 WORKDIR /root
 RUN apt-get install -y xz-utils
 RUN curl -O https://nodejs.org/dist/v18.18.0/node-v18.18.0-linux-x64.tar.xz
