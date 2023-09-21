@@ -1,9 +1,30 @@
-# How to build
+# What is it?
 
-Requires Docker. Just clone and run ./build.sh. It creates an image called nvim, make sure it won't replace anything.
+Dockerified VIM!
 
-# How to run
+I dockerified @ThePrimeagen's nvim config (with minor changes), to pull it into dev
+servers and get nvim code auto-completion without any setup.
 
-Move or symlink dvim into your path. Go into a directory you wish to edit and simply type dvim.
-You'll bash into the container, in a directory where the contents of your current host directory are mounted.
-Simply run nvim as usual to edit files.
+It can also be useful for people to try a config without any effort.
+
+# Setup
+
+Put dvim into your $PATH.
+
+## Why? 
+
+All dvim does is run `docker run`. It will share your current directory with 
+the container and run the bash command.
+
+If you don't have the image yet, docker will pull it for you. Hence,
+no other setup is required.
+
+# Run
+
+```
+cd my-project
+dvim
+```
+
+This launches the container and puts you in its shell. Then, just `nvim` or
+`nvim .` as usual
