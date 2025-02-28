@@ -1,1 +1,1 @@
-sudo docker run -ti -v $(pwd):/root/$(basename $(pwd)) -w /root/$(basename $(pwd)) ghcr.io/vicegale/dvim:master bash
+sudo docker run --rm -ti -v $(pwd):/root/$(basename $(pwd)) -w /root/$(basename $(pwd)) ghcr.io/vicegale/dvim:master bash
